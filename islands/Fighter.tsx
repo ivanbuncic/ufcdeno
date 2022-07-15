@@ -26,7 +26,7 @@ export default function Fighter({
       class={tw`mt-10 border border-black rounded-lg p-10 max-w-sm mx-auto flex flex-col items-center`}
     >
       <img src={image} width={120} height={64} />
-      <h1 class={tw`text-indigo-800 text-3xl font-semibold mt-2 text-center`}>
+      <h1 class={tw`text-indigo-800 text-3xl font-bold mt-2 text-center`}>
         {name}
       </h1>
       <h3 class={tw`text-xl`}>Division: {division}</h3>
