@@ -26,12 +26,12 @@ export default function Fighter({
       class={tw`mt-10 border border-black rounded-lg p-10 max-w-sm mx-auto flex flex-col items-center`}
     >
       <img src={image} width={120} height={64} />
-      <h1 class={tw`text-indigo-800 text-3xl font-semibold text-sans mt-2 text-center`}>
+      <h1 class={tw`text-indigo-800 text-3xl font-semibold mt-2 text-center`}>
         {name}
       </h1>
       <h3 class={tw`text-xl`}>Division: {division}</h3>
       <h4 class={tw`font-bold`}>Rank: {rank}</h4>
-      <div class={tw`flex flex row gap-2`}>
+      <div class={tw`flex flex-row gap-2`}>
         <h5>Wins: {wins}</h5> <h5>Loses: {loses}</h5> <h5>Draw: {draw}</h5>
       </div>
     </div>
