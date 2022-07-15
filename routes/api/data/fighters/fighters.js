@@ -1255,7 +1255,7 @@
         "wins": 19,
         "loses": 7,
         "draw": 0,
-        "no contest": 1,
+        "no contest": 2,
         "gender": "male",
         "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-06/e4a08b07-c67d-41ae-9540-bfb0a1180c05%252FMUNHOZ_PEDRO_L_07-02.png?itok=tnxwO4PK"
     },
@@ -1303,7 +1303,7 @@
         "wins": 15,
         "loses": 1,
         "draw": 0,
-        "no contest": 0,
+        "no contest": 1,
         "gender": "male",
         "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/69222%252Fprofile-galery%252Ffullbodyleft-picture%252FO%2527MALLEY_SEAN_L_07-10.png?itok=iTjZeeCn"
     },
