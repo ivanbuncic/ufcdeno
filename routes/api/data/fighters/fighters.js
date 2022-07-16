@@ -1120,7 +1120,7 @@ export const fighters = [
         "rank": "14",
         "division": "Featherweight",
         "name": "Shane Burgos",
-        "wins": 14,
+        "wins": 15,
         "loses": 3,
         "draw": 0,
         "no contest": 0,
