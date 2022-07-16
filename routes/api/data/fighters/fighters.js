@@ -1,4 +1,4 @@
-﻿export const fighters = [
+export const fighters = [
     {
         "id": "francis-ngannou", 
         "rank": "Champ",
@@ -376,7 +376,7 @@
         "rank": "15",
         "division": "Light Heavyweight",
         "name": "Dustin Jacoby",
-        "wins": 17,
+        "wins": 18,
         "loses": 5,
         "draw": 1,
         "no contest": 0,
