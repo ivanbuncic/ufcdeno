@@ -1112,7 +1112,7 @@ export const fighters = [{
     "draw": 0,
     "no contest": 0,
     "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/YUSUFF_SODIQ_L_04-10.png?itok=j_KjfXT4"
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-06/BARBOZA_EDSON_L_05-15.png?VersionId=null&itok=QXXSVXOn"
   },
   {
     "id": "shane-burgos",
