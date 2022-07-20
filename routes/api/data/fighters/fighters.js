@@ -1148,7 +1148,7 @@ export const fighters = [{
     "draw": 0,
     "no contest": 0,
     "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-04/STERLING_ALJAMAIN_L_BELT_04-09.png?itok=9jHYZcT2"
+    "image": "/STERLING_ALJAMAIN.png"
   },
   {
     "id": "petr-yan",
@@ -1340,7 +1340,7 @@ export const fighters = [{
     "draw": 1,
     "no contest": 0,
     "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-04/67787_profile-galery_fullbodyleft-picture_FIGUEIREDO_DEIVESON_L_BELT_11-21.png?VersionId=null&itok=E3j7xiB1"
+    "image": "/FIGUEIREDO_DEIVESON.png"
   },
   {
     "id": "brandon-moreno",
