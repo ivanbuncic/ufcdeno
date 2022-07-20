@@ -8,7 +8,7 @@ export const fighters = [{
   "draw": 0,
   "no contest": 0,
   "gender": "male",
-  "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-01/3d75a594-27a1-4c19-875a-8d7d4dc17b42%252FNGANNOU_FRANCIS_L_BELT_01-22.png?itok=EcfIjUew"
+  "image": "/NGANNOU_FRANCIS.png"
 },
   {
     "id": "ciryl-gane",
@@ -200,7 +200,7 @@ export const fighters = [{
     "draw": 1,
     "no contest": 0,
     "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-06/e66264ab-cd89-48bb-a170-1fec589b46a5%252FPROCHAZKA_JIRI_L_BELTCOMP.png?itok=ShoQER3C"
+    "image": "/PROCHAZKA_JIRI.png"
   },
   {
     "id": "glover-teixeira",
