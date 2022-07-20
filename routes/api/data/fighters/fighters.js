@@ -1271,20 +1271,8 @@ export const fighters = [{
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-08/69674%252Fprofile-galery%252Ffullbodyleft-picture%252FSONG_YADONG_L_08-07.png?itok=ZFXeOlib"
   },
   {
-    "id": "frankie-edgar",
-    "rank": "11",
-    "division": "Bantamweight",
-    "name": "Frankie Edgar",
-    "wins": 24,
-    "loses": 10,
-    "draw": 1,
-    "no contest": 0,
-    "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/67978%252Fprofile-galery%252Ffullbodyleft-picture%252FEDGAR_FRANKIE_L_11-06.png?itok=GirRfbaO"
-  },
-  {
     "id": "ricky-simon",
-    "rank": "12",
+    "rank": "11",
     "division": "Bantamweight",
     "name": "Ricky Simón",
     "wins": 20,
@@ -1293,6 +1281,18 @@ export const fighters = [{
     "no contest": 0,
     "gender": "male",
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/5b6e3467-269a-4dbe-8ed4-b13b540390b5%252FSIMON_RICKY_L_12-18.png?itok=FGrgo93n"
+  },
+  {
+    "id": "frankie-edgar",
+    "rank": "12",
+    "division": "Bantamweight",
+    "name": "Frankie Edgar",
+    "wins": 24,
+    "loses": 10,
+    "draw": 1,
+    "no contest": 0,
+    "gender": "male",
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/67978%252Fprofile-galery%252Ffullbodyleft-picture%252FEDGAR_FRANKIE_L_11-06.png?itok=GirRfbaO"
   },
   {
     "id": "sean-omalley",
@@ -1307,20 +1307,8 @@ export const fighters = [{
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/69222%252Fprofile-galery%252Ffullbodyleft-picture%252FO%2527MALLEY_SEAN_L_07-10.png?itok=iTjZeeCn"
   },
   {
-    "id": "jack-shore",
-    "rank": "14",
-    "division": "Bantamweight",
-    "name": "Jack Shore",
-    "wins": 16,
-    "loses": 1,
-    "draw": 0,
-    "no contest": 0,
-    "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/2b830d04-ea6c-42e5-94c9-6dfa4a5dcbeb%252FSHORE_JACK_L_03-19.png?itok=iDmLG6-j"
-  },
-  {
     "id": "umar-nurmagomedov",
-    "rank": "15",
+    "rank": "14",
     "division": "Bantamweight",
     "name": "Umar Nurmagomedov",
     "wins": 15,
@@ -1329,6 +1317,18 @@ export const fighters = [{
     "no contest": 0,
     "gender": "male",
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/d57195df-5f24-4d29-a65d-84d4f4bf3d37%252FNURMAGOMEDOV_UMAR_L_03-05.png?itok=erMJibXF"
+  },
+  {
+    "id": "jack-shore",
+    "rank": "15",
+    "division": "Bantamweight",
+    "name": "Jack Shore",
+    "wins": 16,
+    "loses": 1,
+    "draw": 0,
+    "no contest": 0,
+    "gender": "male",
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/2b830d04-ea6c-42e5-94c9-6dfa4a5dcbeb%252FSHORE_JACK_L_03-19.png?itok=iDmLG6-j"
   },
   {
     "id": "deiveson-figueiredo",
