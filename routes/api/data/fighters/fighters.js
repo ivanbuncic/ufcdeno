@@ -1467,8 +1467,8 @@ export const fighters = [{
     "rank": "11",
     "division": "Flyweight",
     "name": "Su Mudaerji",
-    "wins": 14,
-    "loses": 4,
+    "wins": 16,
+    "loses": 5,
     "draw": 0,
     "no contest": 0,
     "gender": "male",
@@ -1499,20 +1499,8 @@ export const fighters = [{
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-08/68659%252Fprofile-galery%252Ffullbodyleft-picture%252FKAPE_MANEL_L_08-07.png?itok=44629J6k"
   },
   {
-    "id": "tagir-ulanbekov",
-    "rank": "14",
-    "division": "Flyweight",
-    "name": "Tagir Ulanbekov",
-    "wins": 13,
-    "loses": 2,
-    "draw": 0,
-    "no contest": 0,
-    "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-10/71626%252Fprofile-galery%252Ffullbodyleft-picture%252FULANBEKOV_TAGIR_L_10-30.png?itok=Cc8W43OP"
-  },
-  {
     "id": "jeffrey-molina",
-    "rank": "15",
+    "rank": "14",
     "division": "Flyweight",
     "name": "Jeffrey Molina",
     "wins": 11,
@@ -1521,6 +1509,18 @@ export const fighters = [{
     "no contest": 0,
     "gender": "male",
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-08/71609%252Fprofile-galery%252Ffullbodyleft-picture%252FMOLINA_JEFF_L_04-24.png?itok=b8rGAbaH"
+  },
+  {
+    "id": "tagir-ulanbekov",
+    "rank": "15",
+    "division": "Flyweight",
+    "name": "Tagir Ulanbekov",
+    "wins": 13,
+    "loses": 2,
+    "draw": 0,
+    "no contest": 0,
+    "gender": "male",
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-10/71626%252Fprofile-galery%252Ffullbodyleft-picture%252FULANBEKOV_TAGIR_L_10-30.png?itok=Cc8W43OP"
   },
   {
     "id": "julianna-pena",
