@@ -359,20 +359,8 @@ export const fighters = [{
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-02/601d454c-9816-4660-8f47-c92f3a3738f3%252FWALKER_JOHNNY_L_02-19.png?itok=-Oj2FjNg"
   },
   {
-    "id": "jimmy-crute",
-    "rank": "14",
-    "division": "Light Heavyweight",
-    "name": "Jimmy Crute",
-    "wins": 12,
-    "loses": 3,
-    "draw": 0,
-    "no contest": 0,
-    "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-06/CRUTE_JIMMY_L_04-24.png?VersionId=null&itok=bclnaDbU"
-  },
-  {
     "id": "dustin-jacoby",
-    "rank": "15",
+    "rank": "14",
     "division": "Light Heavyweight",
     "name": "Dustin Jacoby",
     "wins": 18,
@@ -381,6 +369,18 @@ export const fighters = [{
     "no contest": 0,
     "gender": "male",
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-05/67864%252Fprofile-galery%252Ffullbodyleft-picture%252FJACOBY_DUSTIN_L_05-01.png?VersionId=null&itok=4bE98ApC"
+  },
+  {
+    "id": "jimmy-crute",
+    "rank": "15",
+    "division": "Light Heavyweight",
+    "name": "Jimmy Crute",
+    "wins": 12,
+    "loses": 3,
+    "draw": 0,
+    "no contest": 0,
+    "gender": "male",
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-06/CRUTE_JIMMY_L_04-24.png?VersionId=null&itok=bclnaDbU"
   },
   {
     "id": "israel-adesanya",
@@ -456,7 +456,7 @@ export const fighters = [{
   },
   {
     "id": "alex-pereira",
-    "rank": "6",
+    "rank": "5",
     "division": "Middleweight",
     "name": "Alex Pereira",
     "wins": 6,
@@ -747,7 +747,7 @@ export const fighters = [{
     "rank": "14",
     "division": "Welterweight",
     "name": "Li Jingliang",
-    "wins": 18,
+    "wins": 19,
     "loses": 7,
     "draw": 0,
     "no contest": 0,
@@ -971,20 +971,8 @@ export const fighters = [{
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/68778%252Fprofile-galery%252Ffullbodyleft-picture%252FHOLLOWAY_MAX_L_11-13.png?itok=rfWvn7lc"
   },
   {
-    "id": "brian-ortega",
-    "rank": "2",
-    "division": "Featherweight",
-    "name": "Brian Ortega",
-    "wins": 15,
-    "loses": 3,
-    "draw": 0,
-    "no contest": 1,
-    "gender": "male",
-    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/ORTEGA_BRIAN_L_09-25.png?itok=q-u3skUT"
-  },
-  {
     "id": "yair-rodriguez",
-    "rank": "3",
+    "rank": "2",
     "division": "Featherweight",
     "name": "Yair Rodríguez",
     "wins": 14,
@@ -993,6 +981,18 @@ export const fighters = [{
     "no contest": 1,
     "gender": "male",
     "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/69521%252Fprofile-galery%252Ffullbodyleft-picture%252FRODRIGUEZ_YAIR_L_11-13.png?itok=wiqyOhBe"
+  },
+  {
+    "id": "brian-ortega",
+    "rank": "3",
+    "division": "Featherweight",
+    "name": "Brian Ortega",
+    "wins": 15,
+    "loses": 3,
+    "draw": 0,
+    "no contest": 1,
+    "gender": "male",
+    "image": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/ORTEGA_BRIAN_L_09-25.png?itok=q-u3skUT"
   },
   {
     "id": "josh-emmett",
