@@ -457,7 +457,7 @@ export const fighters = [
         draw: 0,
         'no contest': 0,
         gender: 'male',
-        image: '/strickland.png',
+        image: 'https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-09/STRICKLAND_SEAN_L_BELTMOCK.png?itok=QLnBsSSa',
         strength: Math.floor(Math.random() * 100) + 1,
         skill: Math.floor(Math.random() * 10) + 1,
     },
