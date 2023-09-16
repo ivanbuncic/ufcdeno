@@ -14,8 +14,8 @@ export default function Modal({ children, onClose }: ModalProps) {
 
   return (
     <div class={tw`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center`} onClick={onClose}>
-      <div class={tw`bg-white rounded-lg p-4 relative w-full h-full`} onClick={stopPropagation}>
-        <button onClick={onClose} class={tw`absolute top-2 right-2 text-xl font-bold m-2`}>X</button>
+      <div class={tw`bg-white rounded-lg p-4 relative w-screen h-screen overflow-hidden`} onClick={stopPropagation}>
+        <button onClick={onClose} class={tw`absolute top-2.5 right-2.5 text-2xl font-bold m-2`}>X</button>
         {children}
       </div>
     </div>
