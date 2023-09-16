@@ -50,7 +50,7 @@ export default function Fighters() {
     return (
         <section>
             <article
-                class={tw`grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2`}
+                class={tw`grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden`}
             >
                 {fighters.map(fighter => (
                     <div
