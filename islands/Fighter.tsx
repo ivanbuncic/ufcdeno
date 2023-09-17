@@ -13,9 +13,9 @@ export default function Fighter({
 }: IFighter) {
     return (
         <div
-            class={tw`mt-6 mb-6 border border-black rounded-lg p-4 max-w-sm mx-auto flex flex-col items-center text-center`}
+            class={tw`mt-4 mb-4 border border-black rounded-lg p-4 max-w-sm mx-auto flex flex-col items-center text-center`}
         >
-            <img src={image} width={80} height="auto" loading="lazy" />
+            <img src={image} width={95} height="auto" loading="lazy" />
             <h1
                 class={tw`text-indigo-800 text-lg font-semibold mt-2 text-center whitespace-nowrap`}
             >
