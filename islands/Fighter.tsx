@@ -13,7 +13,7 @@ export default function Fighter({
 }: IFighter) {
     return (
         <div
-            class={tw`mt-2 mb-2 border border-black rounded-lg p-4 max-w-sm mx-auto flex flex-col items-center text-center`}
+            class={tw`mt-2 mb-2 p-4 max-w-sm mx-auto flex flex-col items-center text-center`}
         >
             <img src={image} width={85} height="auto" loading="lazy" />
             <h1
