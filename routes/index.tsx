@@ -24,7 +24,7 @@ export default function Home() {
                     alt="Dana, this UFC logo is for training purposes"
                     title="Dana, this UFC logo is for training purposes"
                 />
-                <div class={tw`mx-auto text-xl font-semibold p-2`}>
+                <div class={tw`mx-auto text-xl font-semibold p-2 text-center`}>
                     Hello! Click on two fighters and then click fight to see who
                     will win! Don't cry.
                 </div>
