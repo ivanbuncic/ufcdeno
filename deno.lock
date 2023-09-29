@@ -1,5 +1,8 @@
 {
-  "version": "2",
+  "version": "3",
+  "redirects": {
+    "https://crux.land/router@0.0.11": "https://crux.land/api/get/uYQG.ts"
+  },
   "remote": {
     "https://crux.land/api/get/uYQG.ts": "7be58811e3095cf468a323380aff64515bc30d025da53262894cbca77f50fefc",
     "https://deno.land/std@0.107.0/_util/assert.ts": "2f868145a042a11d5ad0a3c748dcf580add8a0dbc0e876eaa0026303a5488f58",
