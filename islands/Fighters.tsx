@@ -35,7 +35,13 @@ export default function Fighters() {
         const score2 = Math.random() * (fighter2.strength + fighter2.skill);
         const winner = score1 > score2 ? fighter1.name : fighter2.name;
         const loser = score1 < score2 ? fighter1.name : fighter2.name;
-        console.info(`It was rough. ${fighter1.name} has juiced up to ${Math.round(score1)}🧃 and ${fighter2.name} to ${Math.round(score2)}🧃. Best of luck to ${loser} next time! 👊 🥊 💥`)
+        console.info(
+            ` 🥊 ${fighter1.name} juiced up to ${Math.round(
+                score1
+            )}🧃 and ${fighter2.name} to ${Math.round(
+                score2
+            )}🧃. Best of luck to ${loser} next time!`
+        );
         setWinner(winner);
         setLoser(loser);
     };
@@ -82,7 +88,11 @@ export default function Fighters() {
                         <button
                             onClick={fight}
                             disabled={isFightButtonClicked}
-                            class={tw`bg-purple-500 text-white py-2 px-4 rounded text-lg m-2 font-semibold text-base ${isFightButtonClicked ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            class={tw`bg-purple-500 text-white py-2 px-4 rounded text-lg m-2 font-semibold text-base ${
+                                isFightButtonClicked
+                                    ? 'opacity-50 cursor-not-allowed'
+                                    : ''
+                            }`}
                         >
                             Fight!
                         </button>
@@ -92,7 +102,7 @@ export default function Fighters() {
                         <div
                             class={tw`text-purple-700 font-semibold flex justify-center text-lg mt-2 text-center`}
                         >
-                            🍿 {winner} 🎉 demolished {loser}! 💥🥊👊
+                            🏆{winner} demolished 💩 {loser}!{' '}
                         </div>
                     )}
                 </Modal>
