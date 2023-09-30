@@ -102,7 +102,7 @@ export default function Fighters() {
                         <div
                             class={tw`text-purple-700 font-semibold flex justify-center text-base mt-2 text-center`}
                         >
-                            🏆{winner} demolished 💩 {loser}!{' '}
+                            🏆 {winner} demolished 💩 {loser}!{' '}
                         </div>
                     )}
                 </Modal>
