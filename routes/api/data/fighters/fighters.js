@@ -199,7 +199,7 @@ export const fighters = [
         id: 'marcos-rogerio-de-lima',
         rank: '14',
         division: 'Heavyweight',
-        name: 'Marcos Rogério de Lima',
+        name: 'Marcos de Lima',
         wins: 21,
         loses: 9,
         draw: 1,
