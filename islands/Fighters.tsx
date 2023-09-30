@@ -100,7 +100,7 @@ export default function Fighters() {
 
                     {winner && (
                         <div
-                            class={tw`text-purple-700 font-semibold flex justify-center text-lg mt-2 text-center`}
+                            class={tw`text-purple-700 font-semibold flex justify-center text-base mt-2 text-center`}
                         >
                             🏆{winner} demolished 💩 {loser}!{' '}
                         </div>
