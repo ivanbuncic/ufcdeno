@@ -1,7 +1,4 @@
-/** @jsx h */
-import { h } from 'preact';
 import { useState } from 'preact/hooks';
-import { tw } from 'twind';
 import { fighters } from '../routes/api/data/fighters/fighters.js';
 import IFighter from '../interfaces/IFighter.tsx';
 import Fighter from './Fighter.tsx';
@@ -56,13 +53,13 @@ export default function Fighters() {
     return (
         <section>
             <article
-                class={tw`grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden`}
+                class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden"
             >
                 {fighters.map(fighter => (
                     <div
                         key={fighter.id}
                         onClick={() => selectFighter(fighter)}
-                        class={tw`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 ${
+                        class={`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 ${
                             selectedFighters.some(
                                 selected => selected.id === fighter.id
                             )
@@ -78,13 +75,13 @@ export default function Fighters() {
             {selectedFighters.length === 2 && (
                 <Modal onClose={closeModal}>
                     <div
-                        class={tw`p-2 rounded-lg flex flex-col md:flex-row justify-between gap-4`}
+                        class="p-2 rounded-lg flex flex-col md:flex-row justify-between gap-4"
                     >
                         {selectedFighters.map(fighter => (
                             <Fighter {...fighter} />
                         ))}
                     </div>
-                    <div class={tw`flex justify-center`}>
+                    <div class="flex justify-center">
                         <button
                             onClick={fight}
                             disabled={isFightButtonClicked}
@@ -100,7 +97,7 @@ export default function Fighters() {
 
                     {winner && (
                         <div
-                            class={tw`text-purple-700 font-semibold flex justify-center text-base mt-2 text-center`}
+                            class="text-purple-700 font-semibold flex justify-center text-base mt-2 text-center"
                         >
                             🏆 {winner} demolished 💩 {loser}!{' '}
                         </div>
