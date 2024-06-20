@@ -85,7 +85,7 @@ export default function Fighters() {
                         <button
                             onClick={fight}
                             disabled={isFightButtonClicked}
-                            class={`bg-purple-500 text-white py-2 px-4 rounded text-lg m-2 font-semibold text-base ${
+                            class={`bg-purple-500 text-white py-2 px-4 rounded text-lg m-2 font-semibold  ${
                                 isFightButtonClicked
                                     ? 'opacity-50 cursor-not-allowed'
                                     : ''
