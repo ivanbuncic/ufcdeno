@@ -1,1 +1,1 @@
-Deno Fresh project at [ivanbuncic-ufcdeno.deno.dev](https://ivanbuncic-ufcdeno.deno.dev/)
+Deno Fresh project at [ufcdeno.deno.dev](https://ufcdeno.deno.dev/)
