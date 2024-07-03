@@ -10,8 +10,8 @@ export default function Fighter({
 }: IFighter) {
   return (
     <div class="mt-2 mb-2 p-4 max-w-lg lg:max-w-md mx-auto flex flex-col items-center text-center">
-      <img src={image} width={95} height="auto" loading="lazy" />
-      <h1 class="text-indigo-800 text-lg font-semibold mt-2 text-center whitespace-nowrap">
+      <img src={image} width={200} height="auto" loading="lazy" />
+      <h1 class="text-indigo-800 text-lg font-bold mt-2 text-center whitespace-nowrap">
         {name}
       </h1>
       <h3 class="text-base font-semibold">Division: {division}</h3>

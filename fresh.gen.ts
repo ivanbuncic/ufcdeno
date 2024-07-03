@@ -5,8 +5,8 @@
 import * as $_app from "./routes/_app.tsx";
 import * as $api_data_fighters_fighters from "./routes/api/data/fighters/fighters.js";
 import * as $index from "./routes/index.tsx";
+import * as $Fight from "./islands/Fight.tsx";
 import * as $Fighter from "./islands/Fighter.tsx";
-import * as $Fighters from "./islands/Fighters.tsx";
 import * as $Modal from "./islands/Modal.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -17,8 +17,8 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/Fight.tsx": $Fight,
     "./islands/Fighter.tsx": $Fighter,
-    "./islands/Fighters.tsx": $Fighters,
     "./islands/Modal.tsx": $Modal,
   },
   baseUrl: import.meta.url,

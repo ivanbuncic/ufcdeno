@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import Fighters from "../islands/Fighters.tsx";
+import Fighters from "../islands/Fight.tsx";
 
 export default function Home() {
   return (
