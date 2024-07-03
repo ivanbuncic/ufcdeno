@@ -33,6 +33,8 @@ export default function Fighters() {
   const getRandomMove = () => {
     const moves = Object.values(MoveType);  
     const randomMove = moves[Math.floor(Math.random() * moves.length)];
+    console.log(randomMove);
+    
     return randomMove;
   };
 
@@ -73,7 +75,7 @@ export default function Fighters() {
     const loser = score1 < score2 ? fighter1.name : fighter2.name;
     setWinner(winner);
     setLoser(loser);
-    setCurrentImage(`${fighter1.name}-faceoff.png`);
+    setCurrentImage(`${fighter1.id}-faceoff.png`);
     setCurrentMoveIndex(0);
   };
 
@@ -143,7 +145,7 @@ export default function Fighters() {
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
-              class={`bg-purple-500 text-white py-2 px-4 rounded text-lg m-2 font-semibold  ${
+              class={`bg-black text-white py-3 px-5 rounded-lg text-2xl m-2 font-semibold  ${
                 isFightButtonClicked ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
@@ -158,7 +160,7 @@ export default function Fighters() {
           )}
 
           {showResult && winner && (
-            <div class="text-purple-700 font-semibold flex justify-center text-base mt-2 text-center">
+            <div class="text-black font-bold flex justify-center text-3xl mt-2 text-center drop-shadow-md">
               {(`🏆 ${winner} won! Fight ended with ${endingMove ? endingMove : "decision"} over 💩 ${loser}!`).toUpperCase()}
             </div>
           )}

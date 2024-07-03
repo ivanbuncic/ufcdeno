@@ -36,7 +36,7 @@ export default function Modal({ children, onClose }: ModalProps) {
       >
         <button
           onClick={onClose}
-          class="absolute bg-purple-500 text-white p-2 top-4 right-4 font-bold m-2 rounded  text-base"
+          class="absolute bg-black text-white pt-2 pb-3 px-4 top-4 right-4 font-bold m-2 rounded  text-2xl justify-center"
         >
           x
         </button>

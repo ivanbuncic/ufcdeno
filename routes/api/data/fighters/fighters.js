@@ -578,7 +578,7 @@ export const fighters = [
     rank: "9",
     division: "Middleweight",
     name: "Jack Hermansson",
-    wins: 23,
+    wins: 24,
     loses: 8,
     draw: 0,
     "no contest": 0,
