@@ -50,7 +50,7 @@ export default function Fighters() {
       const moveType = getRandomMove();
       movesSequence.push({
         type: moveType,
-        photo: `${currentFighter.id}-${moveType}.png`,
+        photo: `${currentFighter.id}-${moveType}.jpg`,
       });
 
       // Swap fighters
@@ -80,7 +80,7 @@ export default function Fighters() {
     setWinner(winner);
     setLoser(loser);
     setWinnerId(winnerId);
-    setCurrentImage(`${fighter1.id}-faceoff.png`);
+    setCurrentImage(`${fighter1.id}-faceoff.jpg`);
     setCurrentMoveIndex(0);
   };
 
@@ -100,7 +100,6 @@ export default function Fighters() {
   useEffect(() => {
     if (isFightButtonClicked && currentMoveIndex < fightMoves.length) {
       const timeout = setTimeout(() => {
-        console.log(fightMoves[currentMoveIndex].photo);
         setCurrentImage(fightMoves[currentMoveIndex].photo);
         setCurrentMoveIndex(currentMoveIndex + 1);
       }, 1000);
@@ -109,7 +108,7 @@ export default function Fighters() {
       setTimeout(() => {
         setShowResult(true);
       }, 1000);
-      setCurrentImage(`${winnerId}-victory.png`);
+      setCurrentImage(`${winnerId}-victory.jpg`);
     }
   }, [isFightButtonClicked, currentMoveIndex, fightMoves, winner, loser]);
 
@@ -118,7 +117,7 @@ export default function Fighters() {
   return (
     <section>
       {divisions.map((division) => (
-        <div key={division}>
+        <div class="relative" key={division}>
           <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
           <h2 class="text-3xl font-bold my-4 mx-4 underline">{division}</h2>
           <article class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden">
@@ -155,7 +154,7 @@ export default function Fighters() {
               onClick={fight}
               disabled={isFightButtonClicked}
               class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16  ${
-                isFightButtonClicked ? "opacity-50 cursor-not-allowed" : ""
+                isFightButtonClicked ? "opacity-30 cursor-not-allowed" : ""
               }`}
             >
               Fight!
@@ -163,19 +162,19 @@ export default function Fighters() {
           </div>
 
           {currentImage &&  (
-            <div class="flex flex-col items-center transition-opacity duration-500 mt-2 z-10">
+            <div class="flex flex-col transition-opacity duration-500  z-30  items-center w-full m-auto mt-16 absolute top-0">
               <img
-                src={`/photos/moves/${currentImage}`}
+                src={ currentImage ? `/photos/moves/${currentImage}` : `/photos/moves/move_frame_placeholder.jpg`}
                 alt={`${currentImage}`}
                 class="w-full max-w-lg rounded-md shadow-lg"
               />
             </div>
           )}
            {showResult && winner && (
-            <div class="text-black font-bold flex justify-center text-3xl -mt-8 text-center lg:mt-8 z-50 bg-white">
-              {`🏆 ${winner} won! Fight ended with ${
+            <div class="text-black font-bold flex text-2xl -mt-24 text-center lg:mt-8 bg-white items-center  z-50 max-w-2xl mx-auto">
+              🏆 {winner} won! Fight ended with {
                 endingMove ? endingMove : "decision"
-              } over 💩 ${loser}!`.toUpperCase()}
+              } over 💩 {loser}!
             </div>
           )}
         </Modal>

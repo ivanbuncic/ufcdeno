@@ -21,14 +21,14 @@ export default function Home() {
           alt="Dana, this UFC logo is for training purposes"
           title="Dana, this UFC logo is for training purposes"
         />
-        <div class="mx-auto text-xl font-semibold p-2 text-center">
+        <div class="mx-auto text-base font-normal text-justify  p-10 my-4 rounded">
           <p>
             {" "}
             Hello! Welcome to the most accurate UFC fight outome predictor.
           </p>
           <p>
             {" "}
-            Click on two fighters and then click fight to see who will win!
+            Click on two fighters and then click fight to see who will win! Use desktop for slightly better experience.
           </p>
           <p>
             {" "}
@@ -36,10 +36,10 @@ export default function Home() {
           </p>
           <p>
             Support the project. Buy me a coffee{" "}
-            <a href="https://www.paypal.com/paypalme/ibuncic/3" target="_blank">
+                        <a href="https://www.paypal.com/paypalme/ibuncic/3" target="_blank">
               <span class="underline">here</span>
             </a>
-            .
+            . <p>Dana (UFC), pls don't shot this down, we are just playing, this is for training purposes only.</p>
           </p>
         </div>
         <Fighters />

@@ -27,7 +27,7 @@ export default function Modal({ children, onClose }: ModalProps) {
 
   return (
     <div
-      class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center justify-items-center content-center"
+      class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center justify-items-center content-center z-20"
       onClick={onClose}
     >
       <div
@@ -36,7 +36,7 @@ export default function Modal({ children, onClose }: ModalProps) {
       >
         <button
           onClick={onClose}
-          class="absolute bg-black text-white pt-2 pb-3 px-4 top-4 right-4 font-bold m-2 rounded  text-2xl justify-center"
+          class="absolute bg-black text-white pt-1 lg:pt-2 pb-2 lg:pb-3 px-2 lg:px-4 top-1 lg:top-4 right-1 lg:right-4 font-bold lg;m-2 rounded text:base  lg:text-2xl justify-center z-50"
         >
           x
         </button>
