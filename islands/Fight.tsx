@@ -154,7 +154,7 @@ export default function Fighters() {
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
-              class={`bg-black text-white py-3 px-5 rounded-lg text-2xl m-2 font-semibold max-h-16 -mt-72 ${
+              class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16  ${
                 isFightButtonClicked ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
@@ -163,7 +163,7 @@ export default function Fighters() {
           </div>
 
           {currentImage &&  (
-            <div class="flex flex-col items-center transition-opacity duration-500 -mt-48">
+            <div class="flex flex-col items-center transition-opacity duration-500 mt-2 z-10">
               <img
                 src={`/photos/moves/${currentImage}`}
                 alt={`${currentImage}`}
@@ -172,7 +172,7 @@ export default function Fighters() {
             </div>
           )}
            {showResult && winner && (
-            <div class="text-black font-bold flex justify-center text-3xl mt-12 text-center drop-shadow-md">
+            <div class="text-black font-bold flex justify-center text-3xl -mt-8 text-center drop-shadow-md lg:mt-8 z-50 bg-white">
               {`🏆 ${winner} won! Fight ended with ${
                 endingMove ? endingMove : "decision"
               } over 💩 ${loser}!`.toUpperCase()}

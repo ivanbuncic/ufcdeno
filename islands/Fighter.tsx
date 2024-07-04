@@ -9,8 +9,8 @@ export default function Fighter({
   loses,
 }: IFighter) {
   return (
-    <div class="mt-2 mb-2 p-4 max-w-lg lg:max-w-md mx-auto flex flex-col items-center text-center">
-      <img src={image} width={190} height="auto" loading="lazy" />
+    <div class="mt-1 mb-2 p-2 max-w-40 lg:max-w-lg mx-auto flex flex-col items-center text-center">
+      <img src={image} width={160} height="auto" loading="lazy" />
       <h1 class="text-black text-2xl font-bold mt-2 text-center whitespace-nowrap">
         {name}
       </h1>
