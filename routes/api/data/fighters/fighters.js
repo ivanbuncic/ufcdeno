@@ -2352,7 +2352,7 @@ export const fighters = [
     skill: Math.floor(Math.random() * 10) + 1,
   },
   {
-    id: "Iasmin Lucindo",
+    id: "iasmin-lucindo",
     rank: "14",
     division: "Strawweight",
     name: "Iasmin Lucindo",

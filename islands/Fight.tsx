@@ -8,6 +8,7 @@ import { MoveType, Move } from "../interfaces/moves.ts";
 export default function Fighters() {
   const [selectedFighters, setSelectedFighters] = useState<IFighter[]>([]);
   const [winner, setWinner] = useState<string | null>(null);
+  const [winnerId, setWinnerId] = useState<string | null>(null);
   const [loser, setLoser] = useState<string | null>(null);
   const [isFightButtonClicked, setIsFightButtonClicked] = useState(false);
   const [currentImage, setCurrentImage] = useState<string | null>(null);
@@ -31,10 +32,8 @@ export default function Fighters() {
   };
 
   const getRandomMove = () => {
-    const moves = Object.values(MoveType);  
+    const moves = Object.values(MoveType);
     const randomMove = moves[Math.floor(Math.random() * moves.length)];
-    console.log(randomMove);
-    
     return randomMove;
   };
 
@@ -58,23 +57,29 @@ export default function Fighters() {
       [currentFighter, opponent] = [opponent, currentFighter];
 
       // Check for fight ending moves
-      if (moveType === MoveType.BLOCKED_STRIKING || moveType === MoveType.DEFENDED_GRAPPLING || moveType === MoveType.DEFENDED_TAKE_DOWN) {
+      if (
+        moveType === MoveType.BLOCKED_STRIKING ||
+        moveType === MoveType.DEFENDED_GRAPPLING ||
+        moveType === MoveType.DEFENDED_TAKE_DOWN
+      ) {
         continue;
       }
-      if (Math.random() < 0.1) { // Randomly end fight
+      if (Math.random() < 0.1) {
+        // Randomly end fight
         setEndingMove(moveType);
         break;
       }
     }
     setFightMoves(movesSequence);
-    
 
     const score1 = Math.random() * (fighter1.strength + fighter1.skill);
     const score2 = Math.random() * (fighter2.strength + fighter2.skill);
     const winner = score1 > score2 ? fighter1.name : fighter2.name;
     const loser = score1 < score2 ? fighter1.name : fighter2.name;
+    const winnerId = score1 > score2 ? fighter1.id : fighter2.id;
     setWinner(winner);
     setLoser(loser);
+    setWinnerId(winnerId);
     setCurrentImage(`${fighter1.id}-faceoff.png`);
     setCurrentMoveIndex(0);
   };
@@ -82,6 +87,7 @@ export default function Fighters() {
   const closeModal = () => {
     setSelectedFighters([]);
     setWinner(null);
+    setWinnerId(null);
     setLoser(null);
     setIsFightButtonClicked(false);
     setFightMoves([]);
@@ -94,6 +100,7 @@ export default function Fighters() {
   useEffect(() => {
     if (isFightButtonClicked && currentMoveIndex < fightMoves.length) {
       const timeout = setTimeout(() => {
+        console.log(fightMoves[currentMoveIndex].photo);
         setCurrentImage(fightMoves[currentMoveIndex].photo);
         setCurrentMoveIndex(currentMoveIndex + 1);
       }, 1000);
@@ -102,11 +109,11 @@ export default function Fighters() {
       setTimeout(() => {
         setShowResult(true);
       }, 1000);
-      setCurrentImage(`${winner}-victory.png`);
+      setCurrentImage(`${winnerId}-victory.png`);
     }
   }, [isFightButtonClicked, currentMoveIndex, fightMoves, winner, loser]);
 
-  const divisions = [...new Set(fighters.map(fighter => fighter.division))];
+  const divisions = [...new Set(fighters.map((fighter) => fighter.division))];
 
   return (
     <section>
@@ -116,13 +123,15 @@ export default function Fighters() {
           <h2 class="text-3xl font-bold my-4 mx-4 underline">{division}</h2>
           <article class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden">
             {fighters
-              .filter(fighter => fighter.division === division)
+              .filter((fighter) => fighter.division === division)
               .map((fighter) => (
                 <div
                   key={fighter.id}
                   onClick={() => selectFighter(fighter)}
                   class={`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 ${
-                    selectedFighters.some((selected) => selected.id === fighter.id)
+                    selectedFighters.some(
+                      (selected) => selected.id === fighter.id
+                    )
                       ? "border-solid border-2 border-purple-700"
                       : ""
                   }`}
@@ -145,7 +154,7 @@ export default function Fighters() {
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
-              class={`bg-black text-white py-3 px-5 rounded-lg text-2xl m-2 font-semibold  ${
+              class={`bg-black text-white py-3 px-5 rounded-lg text-2xl m-2 font-semibold max-h-16 -mt-72 ${
                 isFightButtonClicked ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
@@ -153,15 +162,20 @@ export default function Fighters() {
             </button>
           </div>
 
-          {currentImage && (
-            <div class="flex flex-col items-center mt-4 transition-opacity duration-500">
-              <img src={`/images/${currentImage}`} alt="Fight move" class="w-full max-w-md"/>
+          {currentImage &&  (
+            <div class="flex flex-col items-center transition-opacity duration-500 -mt-48">
+              <img
+                src={`/photos/moves/${currentImage}`}
+                alt={`${currentImage}`}
+                class="w-full max-w-lg rounded-md shadow-lg"
+              />
             </div>
           )}
-
-          {showResult && winner && (
-            <div class="text-black font-bold flex justify-center text-3xl mt-2 text-center drop-shadow-md">
-              {(`🏆 ${winner} won! Fight ended with ${endingMove ? endingMove : "decision"} over 💩 ${loser}!`).toUpperCase()}
+           {showResult && winner && (
+            <div class="text-black font-bold flex justify-center text-3xl mt-12 text-center drop-shadow-md">
+              {`🏆 ${winner} won! Fight ended with ${
+                endingMove ? endingMove : "decision"
+              } over 💩 ${loser}!`.toUpperCase()}
             </div>
           )}
         </Modal>
