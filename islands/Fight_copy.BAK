@@ -161,26 +161,20 @@ export default function Fighters() {
             </button>
           </div>
 
-          {currentImage && (
-            <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-500 ${
-                currentImage ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
+          {currentImage &&  (
+            <div class="flex flex-col transition-opacity duration-500  z-30  items-center w-full m-auto mt-16 absolute top-0">
               <img
-                src={
-                  currentImage
-                    ? `/photos/moves/${currentImage}`
-                    : `/photos/moves/move_frame_placeholder.jpg`
-                }
+                src={ currentImage ? `/photos/moves/${currentImage}` : `/photos/moves/move_frame_placeholder.jpg`}
                 alt={`${currentImage}`}
                 class="w-full max-w-lg rounded-md shadow-lg"
               />
             </div>
           )}
-          {showResult && winner && (
-            <div class="text-black font-bold flex text-2xl -mt-24 text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
-              🏆 {winner} won! Fight ended with {endingMove ? endingMove : "decision"} over 💩 {loser}!
+           {showResult && winner && (
+            <div class="text-black font-bold flex text-2xl -mt-24 text-center lg:mt-8 bg-white items-center  z-50 max-w-2xl mx-auto">
+              🏆 {winner} won! Fight ended with {
+                endingMove ? endingMove : "decision"
+              } over 💩 {loser}!
             </div>
           )}
         </Modal>
