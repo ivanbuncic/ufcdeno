@@ -172,7 +172,7 @@ export default function Fighters() {
             </div>
           )}
            {showResult && winner && (
-            <div class="text-black font-bold flex justify-center text-3xl -mt-8 text-center drop-shadow-md lg:mt-8 z-50 bg-white">
+            <div class="text-black font-bold flex justify-center text-3xl -mt-8 text-center lg:mt-8 z-50 bg-white">
               {`🏆 ${winner} won! Fight ended with ${
                 endingMove ? endingMove : "decision"
               } over 💩 ${loser}!`.toUpperCase()}
