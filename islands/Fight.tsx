@@ -16,6 +16,7 @@ export default function Fighters() {
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [endingMove, setEndingMove] = useState<string | null>(null);
+  const [isFading, setIsFading] = useState<boolean>(false);
 
   const selectFighter = (fighter: IFighter) => {
     if (
@@ -100,14 +101,18 @@ export default function Fighters() {
   useEffect(() => {
     if (isFightButtonClicked && currentMoveIndex < fightMoves.length) {
       const timeout = setTimeout(() => {
-        setCurrentImage(fightMoves[currentMoveIndex].photo);
-        setCurrentMoveIndex(currentMoveIndex + 1);
-      }, 2000);
+        setIsFading(true);
+        setTimeout(() => {
+          setCurrentImage(fightMoves[currentMoveIndex].photo);
+          setCurrentMoveIndex(currentMoveIndex + 1);
+          setIsFading(false);
+        }, 400); // Duration of the fade-out
+      }, 1600);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
       setTimeout(() => {
         setShowResult(true);
-      }, 2000);
+      }, 160);
       setCurrentImage(`${winnerId}-victory.jpg`);
     }
   }, [isFightButtonClicked, currentMoveIndex, fightMoves, winner, loser]);
@@ -163,8 +168,8 @@ export default function Fighters() {
 
           {currentImage && (
             <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-500 ${
-                currentImage ? 'opacity-100' : 'opacity-0'
+              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-400 ${
+                isFading ? 'opacity-0' : 'opacity-100'
               }`}
             >
               <img
@@ -179,8 +184,8 @@ export default function Fighters() {
             </div>
           )}
           {showResult && winner && (
-            <div class="text-black font-bold flex text-2xl -mt-24 text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
-              🏆 {winner} won! Fight ended with {endingMove ? endingMove : "decision"} over 💩 {loser}!
+            <div class="text-black font-bold flex text-2xl -mt-24 justify-center text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
+              🏆 {winner} won! Fight ended with {endingMove ? endingMove : "decision"} over <br/> {loser}!
             </div>
           )}
         </Modal>
