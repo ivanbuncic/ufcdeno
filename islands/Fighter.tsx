@@ -35,7 +35,7 @@ export default function Fighter({
       <div id={`${name}-details`}>
         <h3 class="text-base font-semibold">Division: {division}</h3>
         <h4 class="text-base font-bold">Rank: {rank}</h4>
-        <div class="flex flex-row gap-2">
+        <div class="flex flex-row gap-2 justify-center">
           <h5 class="text-sm">Wins: {wins}</h5>
           <h5 class="text-sm">Loses: {loses}</h5>
         </div>
