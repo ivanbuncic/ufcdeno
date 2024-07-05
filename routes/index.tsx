@@ -19,27 +19,21 @@ export default function Home() {
           width="200px"
           src="/logoufc.jpg"
           alt="Dana, this UFC logo is for training purposes"
-          title="Dana, this UFC logo is for training purposes"
+          title="Hello! Welcome to the most accurate UFC fight outcome predictor.  Click on two fighters and then click fight to see who will win! Use desktop for slightly better experience.  Don't cry. Only the same category. O'Malley can fight Pennington. Support the project. Dana (UFC), pls don't shot this down, we are just playing, this is for training purposes only."
         />
-        <div class="mx-auto text-base font-normal text-justify  p-10 my-4 rounded">
+        <div class="mx-auto text-sm font-normal text-justify  p-4 max-w-xl border-dashed border rounded border-purple-600">
           <p>
-            {" "}
-            Hello! Welcome to the most accurate UFC fight outome predictor.
+            Hello! Welcome to the most accurate UFC fight outcome predictor.
           </p>
           <p>
-            {" "}
-            Click on two fighters and then click fight to see who will win! Use desktop for slightly better experience.
+           <b> How to play?</b> Click on two fighters from the same class, then click fight to see who will win! Use desktop for slightly better experience.
           </p>
           <p>
-            {" "}
-            Don't cry. Only the same category. O'Malley can fight Pennington.
-          </p>
-          <p>
-            Support the project. Buy me a coffee{" "}
+            Support  by buying me a coffee{" "}
                         <a href="https://www.paypal.com/paypalme/ibuncic/3" target="_blank">
               <span class="underline">here</span>
             </a>
-            . <p>Dana (UFC), pls don't shot this down, we are just playing, this is for training purposes only.</p>
+            . <p><b>Dana</b> (or UFC), pls don't shot this down, we are just playing, this is for training purposes only.</p>
           </p>
         </div>
         <Fighters />

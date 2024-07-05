@@ -5,6 +5,9 @@ import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
 import { MoveType, Move } from "../interfaces/moves.ts";
 
+/**
+ * Fighters component renders a list of fighters and manages the fight simulation
+ */
 export default function Fighters() {
   const [selectedFighters, setSelectedFighters] = useState<IFighter[]>([]);
   const [winner, setWinner] = useState<string | null>(null);
@@ -18,6 +21,10 @@ export default function Fighters() {
   const [endingMove, setEndingMove] = useState<string | null>(null);
   const [isFading, setIsFading] = useState<boolean>(false);
 
+  /**
+   * Selects a fighter if not already selected or from different division
+   * @param {IFighter} fighter
+   */
   const selectFighter = (fighter: IFighter) => {
     if (
       selectedFighters.some((selected) => selected.id === fighter.id) ||
@@ -32,12 +39,19 @@ export default function Fighters() {
     }
   };
 
+  /**
+   * Returns a random move from MoveType
+   * @returns {MoveType} Random move type
+   */
   const getRandomMove = () => {
     const moves = Object.values(MoveType);
     const randomMove = moves[Math.floor(Math.random() * moves.length)];
     return randomMove;
   };
 
+  /**
+   * Simulates the fight between the selected fighters
+   */
   const fight = () => {
     setIsFightButtonClicked(true);
     const fighter1 = selectedFighters[0];
@@ -85,6 +99,9 @@ export default function Fighters() {
     setCurrentMoveIndex(0);
   };
 
+  /**
+   * Closes the fight modal and resets the states
+   */
   const closeModal = () => {
     setSelectedFighters([]);
     setWinner(null);
@@ -132,13 +149,24 @@ export default function Fighters() {
                 <div
                   key={fighter.id}
                   onClick={() => selectFighter(fighter)}
-                  class={`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 ${
+                  class={`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 focus:border-dotted focus:border-2 focus:border-purple-400 focus:m-0 custom-focus-visible ${
                     selectedFighters.some(
                       (selected) => selected.id === fighter.id
                     )
                       ? "border-solid border-2 border-purple-700"
                       : ""
                   }`}
+                  tabindex={0}
+                  role="button"
+                  aria-pressed={selectedFighters.some(
+                    (selected) => selected.id === fighter.id
+                  )}
+                  aria-label={`Select ${fighter.name}`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      selectFighter(fighter);
+                    }
+                  }}
                 >
                   <Fighter {...fighter} />
                 </div>
@@ -158,9 +186,11 @@ export default function Fighters() {
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
-              class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16  ${
+              class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16 btn-custom-focus-visible hover:bg-purple-800 ${
                 isFightButtonClicked ? "opacity-30 cursor-not-allowed" : ""
               }`}
+              aria-label="Start Fight"
+              tabindex={0}
             >
               Fight!
             </button>
@@ -169,7 +199,7 @@ export default function Fighters() {
           {currentImage && (
             <div
               class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-400 ${
-                isFading ? 'opacity-0' : 'opacity-100'
+                isFading ? "opacity-0" : "opacity-100"
               }`}
             >
               <img
@@ -185,7 +215,8 @@ export default function Fighters() {
           )}
           {showResult && winner && (
             <div class="text-black font-bold flex text-2xl -mt-24 justify-center text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
-              🏆 {winner} won! Fight ended with {endingMove ? endingMove : "decision"} over <br/> {loser}!
+              🏆 {winner} won! Fight ended with{" "}
+              {endingMove ? endingMove : "decision"} over {loser}!
             </div>
           )}
         </Modal>

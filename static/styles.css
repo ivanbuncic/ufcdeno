@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-focus-visible:focus,
+.custom-focus-visible:focus-visible {
+  outline: none; /* Remove default outline */
+  border: 2px dotted salmon; /* Match hover border */
+  margin: 0; /* Match hover margin */
+}
+
+.btn-custom-focus-visible:focus,
+.btn-custom-focus-visible:focus-visible {
+  outline: none; /* Remove default outline */
+  background-color:  #6b21a8; /* Match hover border */
+}
