@@ -65,7 +65,7 @@ export default function Fighters() {
     let opponent = fighter2;
 
     const movesSequence: Move[] = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 47; i++) {
       const moveType = getRandomMove();
       movesSequence.push({
         type: moveType,
@@ -83,7 +83,7 @@ export default function Fighters() {
       ) {
         continue;
       }
-      if (Math.random() < 0.1) {
+      if ( i > 10 && Math.random() < 0.1) {
         // Randomly end fight
         setEndingMove(moveType);
         break;
