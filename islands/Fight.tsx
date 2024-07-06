@@ -159,7 +159,7 @@ export default function Fighters() {
   return (
     <section>
       <audio ref={fightAudioRef} src="/music/fight-music.mp3" />
-      <audio ref={victoryAudioRef} src="/music/audience.wav" />
+      <audio ref={victoryAudioRef} src="/music/victory.mp3" />
       {divisions.map((division) => (
         <div class="relative" key={division}>
           <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
