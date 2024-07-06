@@ -215,8 +215,10 @@ export default function Fighters() {
           )}
           {showResult && winner && (
             <div class="text-black font-bold flex text-2xl -mt-24 justify-center text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
-              🏆 {winner} won! Fight ended with{" "}
-              {endingMove ? endingMove : "decision"} over {loser}!
+              <p>
+                🏆 {winner} won! Fight ended with{" "}
+                {endingMove ? endingMove : "decision"} over {loser}!
+              </p>
             </div>
           )}
         </Modal>
