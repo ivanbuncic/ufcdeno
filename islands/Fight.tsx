@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import { fighters } from "../routes/api/data/fighters/fighters.js";
 import IFighter from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
@@ -20,6 +20,8 @@ export default function Fighters() {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [endingMove, setEndingMove] = useState<string | null>(null);
   const [isFading, setIsFading] = useState<boolean>(false);
+  const fightAudioRef = useRef<HTMLAudioElement | null>(null);
+  const victoryAudioRef = useRef<HTMLAudioElement | null>(null);
 
   /**
    * Selects a fighter if not already selected or from different division
@@ -54,6 +56,9 @@ export default function Fighters() {
    */
   const fight = () => {
     setIsFightButtonClicked(true);
+    if (fightAudioRef.current) {
+      fightAudioRef.current.play();
+    }
     const fighter1 = selectedFighters[0];
     const fighter2 = selectedFighters[1];
 
@@ -113,6 +118,14 @@ export default function Fighters() {
     setCurrentMoveIndex(0);
     setShowResult(false);
     setEndingMove(null);
+    if (fightAudioRef.current) {
+      fightAudioRef.current.pause();
+      fightAudioRef.current.currentTime = 0;
+    }
+    if (victoryAudioRef.current) {
+      victoryAudioRef.current.pause();
+      victoryAudioRef.current.currentTime = 0;
+    }
   };
 
   useEffect(() => {
@@ -129,6 +142,13 @@ export default function Fighters() {
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
       setTimeout(() => {
         setShowResult(true);
+        if (fightAudioRef.current) {
+          fightAudioRef.current.pause();
+          fightAudioRef.current.currentTime = 0;
+        }
+        if (victoryAudioRef.current) {
+          victoryAudioRef.current.play();
+        }
       }, 160);
       setCurrentImage(`${winnerId}-victory.jpg`);
     }
@@ -138,6 +158,8 @@ export default function Fighters() {
 
   return (
     <section>
+      <audio ref={fightAudioRef} src="/music/fight-music.mp3" />
+      <audio ref={victoryAudioRef} src="/music/audience.wav" />
       {divisions.map((division) => (
         <div class="relative" key={division}>
           <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
@@ -205,7 +227,7 @@ export default function Fighters() {
               <img
                 src={
                   currentImage
-                    ? `/photos/moves/${currentImage}`
+                    ? `/photos/moves/ready/${currentImage}`
                     : `/photos/moves/move_frame_placeholder.jpg`
                 }
                 alt={`${currentImage}`}
