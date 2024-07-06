@@ -208,7 +208,7 @@ export default function Fighters() {
           {currentImage && (
             <div
               class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 image-transition ${
-                isFading ? "opacity-60" : "opacity-100"
+                isFading ? "opacity-90" : "opacity-100"
               }`}
             >
               <img
