@@ -136,7 +136,7 @@ export default function Fighters() {
           setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
-        }, 400); // Duration of the fade-out
+        }, 300); // Duration of the fade-out
       }, 1600);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
@@ -220,8 +220,8 @@ export default function Fighters() {
 
           {currentImage && (
             <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-400 ${
-                isFading ? "opacity-0" : "opacity-100"
+              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-300 ${
+                isFading ? "opacity-65" : "opacity-100"
               }`}
             >
               <img
