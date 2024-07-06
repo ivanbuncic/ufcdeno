@@ -21,7 +21,6 @@ export default function Fighters() {
   const [endingMove, setEndingMove] = useState<string | null>(null);
   const [isFading, setIsFading] = useState<boolean>(false);
   const fightAudioRef = useRef<HTMLAudioElement | null>(null);
-  const victoryAudioRef = useRef<HTMLAudioElement | null>(null);
 
   /**
    * Selects a fighter if not already selected or from different division
@@ -122,10 +121,6 @@ export default function Fighters() {
       fightAudioRef.current.pause();
       fightAudioRef.current.currentTime = 0;
     }
-    if (victoryAudioRef.current) {
-      victoryAudioRef.current.pause();
-      victoryAudioRef.current.currentTime = 0;
-    }
   };
 
   useEffect(() => {
@@ -136,19 +131,12 @@ export default function Fighters() {
           setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
-        }, 300); // Duration of the fade-out
+        }, 400); // Duration of the fade-out
       }, 1600);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
       setTimeout(() => {
         setShowResult(true);
-        if (fightAudioRef.current) {
-          fightAudioRef.current.pause();
-          fightAudioRef.current.currentTime = 0;
-        }
-        if (victoryAudioRef.current) {
-          victoryAudioRef.current.play();
-        }
       }, 160);
       setCurrentImage(`${winnerId}-victory.jpg`);
     }
@@ -159,7 +147,6 @@ export default function Fighters() {
   return (
     <section>
       <audio ref={fightAudioRef} src="/music/fight-music.mp3" />
-      <audio ref={victoryAudioRef} src="/music/victory.mp3" />
       {divisions.map((division) => (
         <div class="relative" key={division}>
           <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
@@ -220,8 +207,8 @@ export default function Fighters() {
 
           {currentImage && (
             <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 transition-opacity duration-300 ${
-                isFading ? "opacity-65" : "opacity-100"
+              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 image-transition ${
+                isFading ? "opacity-60" : "opacity-100"
               }`}
             >
               <img
