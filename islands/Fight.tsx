@@ -132,7 +132,7 @@ export default function Fighters() {
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
         }, 200); // Duration of the fade-out
-      }, 1180);
+      }, 1200);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
       setTimeout(() => {
