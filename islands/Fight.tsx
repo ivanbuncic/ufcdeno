@@ -131,8 +131,8 @@ export default function Fighters() {
           setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
-        }, 400); // Duration of the fade-out
-      }, 1600);
+        }, 200); // Duration of the fade-out
+      }, 1180);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
       setTimeout(() => {
