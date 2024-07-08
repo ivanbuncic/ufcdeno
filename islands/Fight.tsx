@@ -20,6 +20,7 @@ export default function Fighters() {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [endingMove, setEndingMove] = useState<string | null>(null);
   const [isFading, setIsFading] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const fightAudioRef = useRef<HTMLAudioElement | null>(null);
 
   /**
@@ -83,7 +84,7 @@ export default function Fighters() {
       ) {
         continue;
       }
-      if ( i > 10 && Math.random() < 0.1) {
+      if (i > 10 && Math.random() < 0.1) {
         // Randomly end fight
         setEndingMove(moveType);
         break;
@@ -144,9 +145,25 @@ export default function Fighters() {
 
   const divisions = [...new Set(fighters.map((fighter) => fighter.division))];
 
+  /**
+   * Handles the search input with debounce
+   */
+  const handleSearch = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    setSearchTerm(target.value);
+  };
+
   return (
     <section>
       <audio ref={fightAudioRef} src="/music/fight-music.mp3" />
+      <div class="mx-auto p-4 flex flex-row justify-center max-w-xl lg:w-xl min-w-80">
+        <input
+          type="text"
+          placeholder="Search fighters..."
+          onInput={handleSearch}
+          class="border border-gray-300 rounded py-3 px-5 bg-purple-100 font-semibold italic text-base "
+        />
+      </div>
       {divisions.map((division) => (
         <div class="relative" key={division}>
           <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
@@ -154,6 +171,9 @@ export default function Fighters() {
           <article class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden">
             {fighters
               .filter((fighter) => fighter.division === division)
+              .filter((fighter) =>
+                fighter.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
               .map((fighter) => (
                 <div
                   key={fighter.id}
