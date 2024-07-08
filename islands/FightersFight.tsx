@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "preact/hooks";
-import { fighters } from "../routes/api/data/fighters/fighters.js";
-import IFighter from "../interfaces/IFighter.tsx";
+import { fighters } from "../routes/api/data/fightersData.ts";
+import { IFighter } from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
 import { MoveType, Move } from "../interfaces/moves.ts";
@@ -8,7 +8,7 @@ import { MoveType, Move } from "../interfaces/moves.ts";
 /**
  * Fighters component renders a list of fighters and manages the fight simulation
  */
-export default function Fighters() {
+export default function FightersFight() {
   const [selectedFighters, setSelectedFighters] = useState<IFighter[]>([]);
   const [winner, setWinner] = useState<string | null>(null);
   const [winnerId, setWinnerId] = useState<string | null>(null);
@@ -84,7 +84,7 @@ export default function Fighters() {
       ) {
         continue;
       }
-      if (i > 10 && Math.random() < 0.1) {
+      if (i > 7 && Math.random() < 0.1) {
         // Randomly end fight
         setEndingMove(moveType);
         break;
@@ -156,33 +156,37 @@ export default function Fighters() {
   return (
     <section>
       <audio ref={fightAudioRef} src="/music/fight-music.mp3" />
-      <div class="mx-auto p-4 flex flex-row justify-center max-w-xl lg:w-xl min-w-80">
+      <div class="mx-auto mt-4 flex flex-row justify-center max-w-xl lg:w-xl ">
         <input
           type="text"
           placeholder="Search fighters..."
           onInput={handleSearch}
-          class="border border-gray-300 rounded py-3 px-5 bg-purple-100 font-semibold italic text-base "
+          class="border-dashed border rounded border-purple-600 py-3 px-5 font-semibold italic text-base w-full"
         />
       </div>
-      {divisions.map((division) => (
-        <div class="relative" key={division}>
-          <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
-          <h2 class="text-3xl font-bold my-4 mx-4 underline">{division}</h2>
-          <article class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden">
-            {fighters
-              .filter((fighter) => fighter.division === division)
-              .filter((fighter) =>
-                fighter.name.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((fighter) => (
+      {divisions.map((division) => {
+        const filteredFighters = fighters
+          .filter((fighter) => fighter.division === division)
+          .filter((fighter) =>
+            fighter.name.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
+        if (filteredFighters.length === 0) return null;
+
+        return (
+          <div class="relative" key={division}>
+            <hr class="border-dashed border-3 border-purple-600 my-6 mx-auto opacity-80 rounded" />
+            <h2 class="text-3xl font-bold my-4 mx-4 underline">{division}</h2>
+            <article class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 m-2 overflow-hidden">
+              {filteredFighters.map((fighter) => (
                 <div
                   key={fighter.id}
                   onClick={() => selectFighter(fighter)}
-                  class={`cursor-pointer hover:border-dotted hover:border-2 hover:border-purple-400 m-0.5 hover:m-0 focus:border-dotted focus:border-2 focus:border-purple-400 focus:m-0 custom-focus-visible ${
+                  class={`cursor-pointer custom-focus-visible ${
                     selectedFighters.some(
                       (selected) => selected.id === fighter.id
                     )
-                      ? "border-solid border-2 border-purple-700"
+                      ? "border-dotted border-2 border-purple-700"
                       : ""
                   }`}
                   tabindex={0}
@@ -200,9 +204,10 @@ export default function Fighters() {
                   <Fighter {...fighter} />
                 </div>
               ))}
-          </article>
-        </div>
-      ))}
+            </article>
+          </div>
+        );
+      })}
 
       {selectedFighters.length === 2 && (
         <Modal onClose={closeModal}>

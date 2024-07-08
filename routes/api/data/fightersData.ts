@@ -1,4 +1,6 @@
-export const fighters = [
+import { IFighter } from "../../../interfaces/IFighter.tsx";
+
+export const fighters: IFighter[] = [
   {
     id: "jon-jones",
     rank: "Champ",

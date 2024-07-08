@@ -1,7 +1,7 @@
 // index.tsx
 
 import { Head } from "$fresh/runtime.ts";
-import Fighters from "../islands/Fight.tsx";
+import FightersFight from "../islands/FightersFight.tsx";
 
 export default function Home() {
   return (
@@ -44,7 +44,7 @@ export default function Home() {
             playing, this is for training purposes only.</p>
           </p>
         </div>
-        <Fighters />
+        <FightersFight />
         <div class="mx-auto py-4">
           <a href="https://fresh.deno.dev">
             <img

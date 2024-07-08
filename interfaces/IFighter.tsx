@@ -1,4 +1,4 @@
-export default interface IFighter {
+export interface IFighter {
     id: string;
     name: string;
     rank: string;
@@ -9,4 +9,6 @@ export default interface IFighter {
     draw: number;
     strength: number;
     skill: number;
+    "no contest": number;
+    gender: string;
   }
