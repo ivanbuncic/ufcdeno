@@ -8,6 +8,8 @@ import * as $index from "./routes/index.tsx";
 import * as $Fighter from "./islands/Fighter.tsx";
 import * as $FightersFight from "./islands/FightersFight.tsx";
 import * as $Modal from "./islands/Modal.tsx";
+import * as $calculateWinProbability from "./islands/calculateWinProbability.ts";
+import * as $determineWinner from "./islands/determineWinner.ts";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -20,6 +22,8 @@ const manifest = {
     "./islands/Fighter.tsx": $Fighter,
     "./islands/FightersFight.tsx": $FightersFight,
     "./islands/Modal.tsx": $Modal,
+    "./islands/calculateWinProbability.ts": $calculateWinProbability,
+    "./islands/determineWinner.ts": $determineWinner,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

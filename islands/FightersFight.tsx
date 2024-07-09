@@ -4,6 +4,7 @@ import { IFighter } from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
 import { MoveType, Move } from "../interfaces/moves.ts";
+import { determineWinner } from "./determineWinner.ts";
 
 /**
  * Fighters component renders a list of fighters and manages the fight simulation
@@ -15,6 +16,7 @@ export default function FightersFight() {
   const [loser, setLoser] = useState<string | null>(null);
   const [isFightButtonClicked, setIsFightButtonClicked] = useState(false);
   const [currentImage, setCurrentImage] = useState<string | null>(null);
+  const [isImageError, setIsImageError] = useState(false);
   const [fightMoves, setFightMoves] = useState<Move[]>([]);
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
   const [showResult, setShowResult] = useState<boolean>(false);
@@ -23,10 +25,6 @@ export default function FightersFight() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const fightAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  /**
-   * Selects a fighter if not already selected or from different division
-   * @param {IFighter} fighter
-   */
   const selectFighter = (fighter: IFighter) => {
     if (
       selectedFighters.some((selected) => selected.id === fighter.id) ||
@@ -41,19 +39,12 @@ export default function FightersFight() {
     }
   };
 
-  /**
-   * Returns a random move from MoveType
-   * @returns {MoveType} Random move type
-   */
   const getRandomMove = () => {
     const moves = Object.values(MoveType);
     const randomMove = moves[Math.floor(Math.random() * moves.length)];
     return randomMove;
   };
 
-  /**
-   * Simulates the fight between the selected fighters
-   */
   const fight = () => {
     setIsFightButtonClicked(true);
     if (fightAudioRef.current) {
@@ -76,7 +67,6 @@ export default function FightersFight() {
       // Swap fighters
       [currentFighter, opponent] = [opponent, currentFighter];
 
-      // Check for fight ending moves
       if (
         moveType === MoveType.BLOCKED_STRIKING ||
         moveType === MoveType.DEFENDED_GRAPPLING ||
@@ -85,28 +75,23 @@ export default function FightersFight() {
         continue;
       }
       if (i > 7 && Math.random() < 0.1) {
-        // Randomly end fight
         setEndingMove(moveType);
         break;
       }
     }
     setFightMoves(movesSequence);
 
-    const score1 = Math.random() * (fighter1.strength + fighter1.skill);
-    const score2 = Math.random() * (fighter2.strength + fighter2.skill);
-    const winner = score1 > score2 ? fighter1.name : fighter2.name;
-    const loser = score1 < score2 ? fighter1.name : fighter2.name;
-    const winnerId = score1 > score2 ? fighter1.id : fighter2.id;
-    setWinner(winner);
-    setLoser(loser);
+    const { winnerName, loserName, winnerId } = determineWinner(
+      fighter1,
+      fighter2
+    );
+    setWinner(winnerName);
+    setLoser(loserName);
     setWinnerId(winnerId);
     setCurrentImage(`${fighter1.id}-faceoff.jpg`);
     setCurrentMoveIndex(0);
   };
 
-  /**
-   * Closes the fight modal and resets the states
-   */
   const closeModal = () => {
     setSelectedFighters([]);
     setWinner(null);
@@ -132,7 +117,8 @@ export default function FightersFight() {
           setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
-        }, 200); // Duration of the fade-out
+          setIsImageError(false); // Reset error state
+        }, 200);
       }, 1200);
       return () => clearTimeout(timeout);
     } else if (currentMoveIndex >= fightMoves.length && winner && loser) {
@@ -140,14 +126,12 @@ export default function FightersFight() {
         setShowResult(true);
       }, 160);
       setCurrentImage(`${winnerId}-victory.jpg`);
+      setIsImageError(false); // Reset error state
     }
   }, [isFightButtonClicked, currentMoveIndex, fightMoves, winner, loser]);
 
   const divisions = [...new Set(fighters.map((fighter) => fighter.division))];
 
-  /**
-   * Handles the search input with debounce
-   */
   const handleSearch = (e: Event) => {
     const target = e.target as HTMLInputElement;
     setSearchTerm(target.value);
@@ -230,23 +214,31 @@ export default function FightersFight() {
             </button>
           </div>
 
-          {currentImage && (
+          {currentImage && !isImageError ? (
             <div
               class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 image-transition ${
                 isFading ? "opacity-90" : "opacity-100"
               }`}
             >
               <img
-                src={
-                  currentImage
-                    ? `/photos/moves/ready/${currentImage}`
-                    : `/photos/moves/move_frame_placeholder.jpg`
-                }
+                src={`/photos/moves/ready/${currentImage}`}
                 alt={`${currentImage}`}
                 class="w-full max-w-lg rounded-md shadow-lg"
+                onError={() => setIsImageError(true)}
               />
             </div>
+          ) : (
+            <div
+              class={`flex flex-col z-30 items-center w-full m-auto mt-32 absolute top-0 text-transition ${
+                isFading ? "opacity-90" : "opacity-100"
+              }`}
+            >
+              <p class="text-center text-3xl font-bold text-black">
+                {fightMoves[currentMoveIndex]?.type.toUpperCase()}
+              </p>
+            </div>
           )}
+
           {showResult && winner && (
             <div class="text-black font-bold flex text-2xl -mt-24 justify-center text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
               <p>

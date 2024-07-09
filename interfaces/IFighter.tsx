@@ -7,8 +7,8 @@ export interface IFighter {
     wins: number;
     loses: number;
     draw: number;
-    strength: number;
-    skill: number;
     "no contest": number;
     gender: string;
+    age: number;
+    streak: number;
   }
