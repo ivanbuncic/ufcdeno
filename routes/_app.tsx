@@ -14,7 +14,7 @@ export default function App({ Component }: PageProps) {
           name="keywords"
           content="ufc, ufc fight prediction, fight outcome, who will win, win ufc fight, loosing a fight"
         />
-        <title>UFC Fight Predictor</title>
+        <title>🍋 UFC fight predictor on Deno Fresh</title>
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>

@@ -8,7 +8,6 @@ export default function Home() {
     <div>
       <Head>
         <head>
-          <title>🍋 UFC fighters on Deno Fresh</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=0.9"
