@@ -195,12 +195,12 @@ export default function FightersFight() {
 
       {selectedFighters.length === 2 && (
         <Modal onClose={closeModal}>
-          <div class="p-2 rounded-lg flex flex-col md:flex-row justify-between gap-4">
+          <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {selectedFighters.map((fighter) => (
-              <Fighter {...fighter} />
+              <div><Fighter {...fighter} /></div>
             ))}
-          </div>
-          <div class="flex justify-center">
+         
+            <div class="flex justify-center mt-4">
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
@@ -216,7 +216,7 @@ export default function FightersFight() {
 
           {currentImage && !isImageError ? (
             <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-16 absolute top-0 image-transition ${
+              class={`z-30 grid items-center w-full m-auto absolute top-0 image-transition ${
                 isFading ? "opacity-90" : "opacity-100"
               }`}
             >
@@ -229,7 +229,7 @@ export default function FightersFight() {
             </div>
           ) : (
             <div
-              class={`flex flex-col z-30 items-center w-full m-auto mt-32 absolute top-0 text-transition ${
+              class={`z-30 grid items-center w-full m-auto absolute top-0 image-transition ${
                 isFading ? "opacity-90" : "opacity-100"
               }`}
             >
@@ -240,13 +240,14 @@ export default function FightersFight() {
           )}
 
           {showResult && winner && (
-            <div class="text-black font-bold flex text-2xl -mt-24 justify-center text-center lg:mt-8 bg-white items-center z-50 max-w-2xl mx-auto">
+            <div class="text-black font-bold text-2xl  justify-center text-center bg-white items-center z-50 max-w-2xl mx-auto flex justify-center">
               <p>
                 🏆 {winner} won! Fight ended with{" "}
                 {endingMove ? endingMove : "decision"} over {loser}!
               </p>
             </div>
           )}
+           </div>
         </Modal>
       )}
     </section>
