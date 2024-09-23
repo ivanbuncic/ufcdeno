@@ -1,7 +1,7 @@
 import IFighter from "../interfaces/IFighter.tsx";
 
 /**
- * Fighter component displays the details of a fighter
+ * Fighter component displays the details of a UFC fighter
  * @param {IFighter} props
  */
 export default function Fighter({
