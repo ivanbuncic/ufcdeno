@@ -15,8 +15,8 @@ export default function FightersFight() {
   const [winnerId, setWinnerId] = useState<string | null>(null);
   const [loser, setLoser] = useState<string | null>(null);
   const [isFightButtonClicked, setIsFightButtonClicked] = useState(false);
-  const [currentImage, setCurrentImage] = useState<string | null>(null);
-  const [isImageError, setIsImageError] = useState(false);
+  // const [currentImage, setCurrentImage] = useState<string | null>(null);
+  //const [isImageError, setIsImageError] = useState(false);
   const [fightMoves, setFightMoves] = useState<Move[]>([]);
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
   const [showResult, setShowResult] = useState<boolean>(false);
@@ -88,7 +88,7 @@ export default function FightersFight() {
     setWinner(winnerName);
     setLoser(loserName);
     setWinnerId(winnerId);
-    setCurrentImage(`${fighter1.id}-faceoff.jpg`);
+    //setCurrentImage(`${fighter1.id}-faceoff.jpg`);
     setCurrentMoveIndex(0);
   };
 
@@ -99,7 +99,7 @@ export default function FightersFight() {
     setLoser(null);
     setIsFightButtonClicked(false);
     setFightMoves([]);
-    setCurrentImage(null);
+    //setCurrentImage(null);
     setCurrentMoveIndex(0);
     setShowResult(false);
     setEndingMove(null);
@@ -114,10 +114,10 @@ export default function FightersFight() {
       const timeout = setTimeout(() => {
         setIsFading(true);
         setTimeout(() => {
-          setCurrentImage(fightMoves[currentMoveIndex].photo);
+          //setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
           setIsFading(false);
-          setIsImageError(false); // Reset error state
+          //setIsImageError(false); // Reset error state
         }, 200);
       }, 1200);
       return () => clearTimeout(timeout);
@@ -125,8 +125,8 @@ export default function FightersFight() {
       setTimeout(() => {
         setShowResult(true);
       }, 160);
-      setCurrentImage(`${winnerId}-victory.jpg`);
-      setIsImageError(false); // Reset error state
+      //setCurrentImage(`${winnerId}-victory.jpg`);
+      //setIsImageError(false); // Reset error state
     }
   }, [isFightButtonClicked, currentMoveIndex, fightMoves, winner, loser]);
 
@@ -195,15 +195,15 @@ export default function FightersFight() {
 
       {selectedFighters.length === 2 && (
         <Modal onClose={closeModal}>
-          <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 row-span-2">
+          <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 row-span-2 relative">
             {selectedFighters.map((fighter) => (
               <div><Fighter {...fighter} /></div>
             ))}
          
 
-          {currentImage && !isImageError ? (
+          {/* {currentImage && !isImageError ? (
             <div
-              class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition ${
+              class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition left-2/4 ${
                 isFading ? "opacity-95" : "opacity-100"
               }`}
             >
@@ -225,7 +225,7 @@ export default function FightersFight() {
                 {fightMoves[currentMoveIndex]?.type.toUpperCase()}
               </p>
             </div>
-          )}
+          )} */}
 
           {showResult && winner && (
             <div class="text-black font-bold text-2xl text-center bg-white items-center z-50 max-w-2xl mx-auto flex justify-center">
@@ -236,7 +236,10 @@ export default function FightersFight() {
             </div>
           )}
            </div>
-
+          
+           <p class="text-center text-3xl font-bold text-black">
+               {fightMoves[currentMoveIndex]?.type.toUpperCase()}
+             </p>
            <div class="flex justify-center mt-4 mx-auto">
             <button
               onClick={fight}
