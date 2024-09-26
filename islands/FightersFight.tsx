@@ -195,29 +195,16 @@ export default function FightersFight() {
 
       {selectedFighters.length === 2 && (
         <Modal onClose={closeModal}>
-          <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 row-span-2">
             {selectedFighters.map((fighter) => (
               <div><Fighter {...fighter} /></div>
             ))}
          
-            <div class="flex justify-center mt-4">
-            <button
-              onClick={fight}
-              disabled={isFightButtonClicked}
-              class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16 btn-custom-focus-visible hover:bg-purple-800 ${
-                isFightButtonClicked ? "opacity-30 cursor-not-allowed" : ""
-              }`}
-              aria-label="Start Fight"
-              tabindex={0}
-            >
-              Fight!
-            </button>
-          </div>
 
           {currentImage && !isImageError ? (
             <div
-              class={`z-30 grid items-center w-full m-auto absolute top-0 image-transition ${
-                isFading ? "opacity-90" : "opacity-100"
+              class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition ${
+                isFading ? "opacity-95" : "opacity-100"
               }`}
             >
               <img
@@ -234,13 +221,14 @@ export default function FightersFight() {
               }`}
             >
               <p class="text-center text-3xl font-bold text-black">
+               
                 {fightMoves[currentMoveIndex]?.type.toUpperCase()}
               </p>
             </div>
           )}
 
           {showResult && winner && (
-            <div class="text-black font-bold text-2xl  justify-center text-center bg-white items-center z-50 max-w-2xl mx-auto flex justify-center">
+            <div class="text-black font-bold text-2xl text-center bg-white items-center z-50 max-w-2xl mx-auto flex justify-center">
               <p>
                 🏆 {winner} won! Fight ended with{" "}
                 {endingMove ? endingMove : "decision"} over {loser}!
@@ -248,6 +236,20 @@ export default function FightersFight() {
             </div>
           )}
            </div>
+
+           <div class="flex justify-center mt-4 mx-auto">
+            <button
+              onClick={fight}
+              disabled={isFightButtonClicked}
+              class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16 btn-custom-focus-visible hover:bg-purple-800 ${
+                isFightButtonClicked ? "opacity-30 cursor-not-allowed" : ""
+              }`}
+              aria-label="Start Fight"
+              tabindex={0}
+            >
+              Fight!
+            </button>
+          </div>
         </Modal>
       )}
     </section>

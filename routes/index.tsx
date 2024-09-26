@@ -3,7 +3,7 @@
 import { Head } from "$fresh/runtime.ts";
 import FightersFight from "../islands/FightersFight.tsx";
 
-const maintenanceMode = true;
+const maintenanceMode = false;
 
 export default function Home() {
  if (maintenanceMode) {
@@ -11,7 +11,6 @@ export default function Home() {
    
  } else {
   return (
-  
     <div>
       <Head>
         <head>
