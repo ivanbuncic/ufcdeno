@@ -197,11 +197,12 @@ export default function FightersFight() {
         <Modal onClose={closeModal}>
           <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 row-span-2 relative">
             {selectedFighters.map((fighter) => (
-              <div><Fighter {...fighter} /></div>
+              <div>
+                <Fighter {...fighter} />
+              </div>
             ))}
-         
 
-          {/* {currentImage && !isImageError ? (
+            {/* {currentImage && !isImageError ? (
             <div
               class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition left-2/4 ${
                 isFading ? "opacity-95" : "opacity-100"
@@ -226,21 +227,20 @@ export default function FightersFight() {
               </p>
             </div>
           )} */}
-
+          </div>
           {showResult && winner && (
-            <div class="text-black font-bold text-2xl text-center bg-white items-center z-50 max-w-2xl mx-auto flex justify-center">
-              <p>
+            <div class="text-black font-bold text-2xl bg-white z-50 max-w-2xl mx-auto text-center flex flex-row">
+              <p class="text-center mx-auto">
                 🏆 {winner} won! Fight ended with{" "}
                 {endingMove ? endingMove : "decision"} over {loser}!
               </p>
             </div>
           )}
-           </div>
-          
-           <p class="text-center text-3xl font-bold text-black">
-               {fightMoves[currentMoveIndex]?.type.toUpperCase()}
-             </p>
-           <div class="flex justify-center mt-4 mx-auto">
+
+          <p class="text-center text-3xl font-bold text-black">
+            {fightMoves[currentMoveIndex]?.type.toUpperCase()}
+          </p>
+          <div class="flex justify-center mt-4 mx-auto">
             <button
               onClick={fight}
               disabled={isFightButtonClicked}
