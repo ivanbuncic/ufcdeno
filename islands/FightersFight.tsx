@@ -201,7 +201,6 @@ export default function FightersFight() {
                 <Fighter {...fighter} />
               </div>
             ))}
-
             {/* {currentImage && !isImageError ? (
             <div
               class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition left-2/4 ${
