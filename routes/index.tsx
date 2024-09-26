@@ -3,8 +3,15 @@
 import { Head } from "$fresh/runtime.ts";
 import FightersFight from "../islands/FightersFight.tsx";
 
+const maintenanceMode = true;
+
 export default function Home() {
+ if (maintenanceMode) {
+  return <h1>We are cleaning up. Will be back soon!</h1>
+   
+ } else {
   return (
+  
     <div>
       <Head>
         <head>
@@ -63,4 +70,5 @@ export default function Home() {
       </div>
     </div>
   );
+ }
 }
