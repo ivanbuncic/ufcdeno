@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { fighters } from "../routes/api/data/fightersData.ts";
 import { IFighter } from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
-import { MoveType, Move } from "../interfaces/moves.ts";
+import { Move, MoveType } from "../interfaces/moves.ts";
 import { determineWinner } from "./determineWinner.ts";
 
 /**
@@ -29,7 +29,7 @@ export default function FightersFight() {
     if (
       selectedFighters.some((selected) => selected.id === fighter.id) ||
       selectedFighters.some(
-        (selected) => selected.division !== fighter.division
+        (selected) => selected.division !== fighter.division,
       )
     ) {
       return;
@@ -83,7 +83,7 @@ export default function FightersFight() {
 
     const { winnerName, loserName, winnerId } = determineWinner(
       fighter1,
-      fighter2
+      fighter2,
     );
     setWinner(winnerName);
     setLoser(loserName);
@@ -168,15 +168,15 @@ export default function FightersFight() {
                   onClick={() => selectFighter(fighter)}
                   class={`cursor-pointer custom-focus-visible ${
                     selectedFighters.some(
-                      (selected) => selected.id === fighter.id
-                    )
+                        (selected) => selected.id === fighter.id,
+                      )
                       ? "border-dotted border-2 border-purple-700"
                       : ""
                   }`}
                   tabindex={0}
                   role="button"
                   aria-pressed={selectedFighters.some(
-                    (selected) => selected.id === fighter.id
+                    (selected) => selected.id === fighter.id,
                   )}
                   aria-label={`Select ${fighter.name}`}
                   onKeyDown={(e) => {
@@ -201,7 +201,8 @@ export default function FightersFight() {
                 <Fighter {...fighter} />
               </div>
             ))}
-            {/* {currentImage && !isImageError ? (
+            {
+              /* {currentImage && !isImageError ? (
             <div
               class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition left-2/4 ${
                 isFading ? "opacity-95" : "opacity-100"
@@ -221,11 +222,12 @@ export default function FightersFight() {
               }`}
             >
               <p class="text-center text-3xl font-bold text-black">
-               
+
                 {fightMoves[currentMoveIndex]?.type.toUpperCase()}
               </p>
             </div>
-          )} */}
+          )} */
+            }
           </div>
           {showResult && winner && (
             <div class="text-black font-bold text-2xl bg-white z-50 max-w-2xl mx-auto text-center flex flex-row">

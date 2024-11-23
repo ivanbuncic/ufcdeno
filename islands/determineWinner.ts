@@ -9,14 +9,14 @@ import { IFighter } from "../interfaces/IFighter.tsx";
  */
 
 export function determineWinner(fighter1: IFighter, fighter2: IFighter) {
-    const winProbability1 = calculateWinProbability(fighter1);
-    const winProbability2 = calculateWinProbability(fighter2);
-  
-    const score1 = Math.random() * winProbability1;
-    const score2 = Math.random() * winProbability2;
-    const winnerName = score1 > score2 ? fighter1.name : fighter2.name;
-    const loserName = score1 < score2 ? fighter1.name : fighter2.name;
-    const winnerId = score1 > score2 ? fighter1.id : fighter2.id;
-  
-    return { winnerName, loserName, winnerId };
+  const winProbability1 = calculateWinProbability(fighter1);
+  const winProbability2 = calculateWinProbability(fighter2);
+
+  const score1 = Math.random() * winProbability1;
+  const score2 = Math.random() * winProbability2;
+  const winnerName = score1 > score2 ? fighter1.name : fighter2.name;
+  const loserName = score1 < score2 ? fighter1.name : fighter2.name;
+  const winnerId = score1 > score2 ? fighter1.id : fighter2.id;
+
+  return { winnerName, loserName, winnerId };
 }
