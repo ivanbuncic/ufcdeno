@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import { fighters } from "../routes/api/data/fightersData.ts";
+import fighters  from "../routes/api/data/fightersData.json" with { type: "json" };
 import { IFighter } from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
@@ -152,7 +152,7 @@ export default function FightersFight() {
         const filteredFighters = fighters
           .filter((fighter) => fighter.division === division)
           .filter((fighter) =>
-            fighter.name.toLowerCase().includes(searchTerm.toLowerCase())
+            fighter["full name"].toLowerCase().includes(searchTerm.toLowerCase())
           );
 
         if (filteredFighters.length === 0) return null;
@@ -178,7 +178,7 @@ export default function FightersFight() {
                   aria-pressed={selectedFighters.some(
                     (selected) => selected.id === fighter.id,
                   )}
-                  aria-label={`Select ${fighter.name}`}
+                  aria-label={`Select ${fighter["full name"]}`}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       selectFighter(fighter);
@@ -201,33 +201,6 @@ export default function FightersFight() {
                 <Fighter {...fighter} />
               </div>
             ))}
-            {
-              /* {currentImage && !isImageError ? (
-            <div
-              class={`z-30 grid items-center w-full mx-auto absolute top-0 image-transition left-2/4 ${
-                isFading ? "opacity-95" : "opacity-100"
-              }`}
-            >
-              <img
-                src={`/photos/moves/ready/${currentImage}`}
-                alt={`${currentImage}`}
-                class="w-full max-w-lg rounded-md shadow-lg"
-                onError={() => setIsImageError(true)}
-              />
-            </div>
-          ) : (
-            <div
-              class={`z-30 grid items-center w-full m-auto absolute top-0 image-transition ${
-                isFading ? "opacity-90" : "opacity-100"
-              }`}
-            >
-              <p class="text-center text-3xl font-bold text-black">
-
-                {fightMoves[currentMoveIndex]?.type.toUpperCase()}
-              </p>
-            </div>
-          )} */
-            }
           </div>
           {showResult && winner && (
             <div class="text-black font-bold text-2xl bg-white z-50 max-w-2xl mx-auto text-center flex flex-row">
