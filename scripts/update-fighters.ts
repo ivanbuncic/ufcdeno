@@ -1,5 +1,7 @@
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.48/deno-dom-wasm.ts";
-import fighters from "../routes/api/data/fightersData.json" with { type: "json" };
+import fighters from "../routes/api/data/fightersData.json" with {
+  type: "json",
+};
 import { IFighter } from "../interfaces/IFighter.tsx";
 
 // Fetch and parse UFC rankings from Wikipedia
@@ -17,7 +19,8 @@ async function fetchUfcRankings(): Promise<IFighter[]> {
   const weightCategories = document.querySelectorAll("table.wikitable");
   weightCategories.forEach((table) => {
     const division =
-      table.closest("h2")?.querySelector("span")?.textContent?.trim() || "Unknown";
+      table.closest("h2")?.querySelector("span")?.textContent?.trim() ||
+      "Unknown";
 
     const rows = table.querySelectorAll("tr");
     rows.forEach((row) => {
@@ -35,13 +38,15 @@ async function fetchUfcRankings(): Promise<IFighter[]> {
 
         // Match existing fighter data
         const existingFighter = fighters.find(
-          (f) => f["full name"].toLowerCase() === name.toLowerCase()
+          (f) => f["full name"].toLowerCase() === name.toLowerCase(),
         );
 
         // Calculate win-to-loss ratio
         const winLossRatio = losses > 0
           ? parseFloat(((wins / losses) * 100).toFixed(2))
-          : wins > 0 ? Infinity : 0;
+          : wins > 0
+          ? Infinity
+          : 0;
 
         // Build fighter object
         newFighters.push({
@@ -74,7 +79,7 @@ async function updateFightersJson() {
 
   await Deno.writeTextFile(
     "../routes/api/data/fightersData.json", // Overwrite the existing JSON
-    JSON.stringify(updatedFighters, null, 2) // Pretty print for readability
+    JSON.stringify(updatedFighters, null, 2), // Pretty print for readability
   );
 
   console.log("Updated fighters data saved to 'fightersData.json'");

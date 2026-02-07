@@ -14,8 +14,12 @@ export function determineWinner(fighter1: IFighter, fighter2: IFighter) {
 
   const score1 = Math.random() * winProbability1;
   const score2 = Math.random() * winProbability2;
-  const winnerName = score1 > score2 ? fighter1.name : fighter2.name;
-  const loserName = score1 < score2 ? fighter1.name : fighter2.name;
+  const winnerName = score1 > score2
+    ? fighter1["full name"]
+    : fighter2["full name"];
+  const loserName = score1 > score2
+    ? fighter2["full name"]
+    : fighter1["full name"];
   const winnerId = score1 > score2 ? fighter1.id : fighter2.id;
 
   return { winnerName, loserName, winnerId };

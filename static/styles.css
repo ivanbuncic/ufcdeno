@@ -18,3 +18,29 @@
 .image-transition {
   transition: opacity 0.2s ease-in-out;
 }
+
+@keyframes fighter-shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(2px, -1px) rotate(1deg);
+  }
+  60% {
+    transform: translate(-2px, 0) rotate(-1deg);
+  }
+  80% {
+    transform: translate(2px, 1px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.fighter-shake {
+  animation: fighter-shake 0.28s linear infinite;
+  transform-origin: center;
+}

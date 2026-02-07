@@ -20,7 +20,7 @@ export enum MoveType {
   /* 19 */ STANDING_GUILLOTINE_CHOKE = "standing guillotine choke",
   /* 20 */ TAKE_DOWN = "take-down",
   /* 21 */ UPPERCUT = "uppercut to the chin",
-  /* 22 */ SPINNING_BACK_KICK = "spinning back kick"
+  /* 22 */ SPINNING_BACK_KICK = "spinning back kick",
 }
 
 export interface Move {

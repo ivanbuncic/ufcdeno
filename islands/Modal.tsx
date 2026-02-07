@@ -52,6 +52,7 @@ export default function Modal({ children, onClose }: ModalProps) {
         tabindex={0}
       >
         <button
+          type="button"
           onClick={onClose}
           class="absolute bg-black text-white pt-1 lg:pt-2 pb-2 lg:pb-3 px-2 lg:px-4 top-1 lg:top-4 right-1 lg:right-4 font-bold lg:m-2 rounded text:base lg:text-2xl justify-center z-50 btn-custom-focus-visible hover:bg-purple-800"
           aria-label="Close Modal"

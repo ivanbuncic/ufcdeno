@@ -1,22 +1,41 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start": "deno run -A dev.ts",
+    "dev": "deno run -A dev.ts",
     "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts"
+    "preview": "deno serve -A _fresh/server.js"
   },
   "nodeModulesDir": "auto",
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.6.8/",
-    "preact": "https://esm.sh/preact@10.19.6",
-    "preact/": "https://esm.sh/preact@10.19.6/",
-    "preact-render-to-string": "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.8.2",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
+    "preact": "npm:preact@^10.27.2",
+    "@preact/signals": "npm:@preact/signals@^2.5.0",
+    "@fresh/plugin-tailwind": "jsr:@fresh/plugin-tailwind@^1.0.0",
     "tailwindcss": "npm:tailwindcss@3.4.4",
     "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.4/plugin.js"
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.4/plugin.js",
+    "fresh": "jsr:@fresh/core@^2.2.0"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
-  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
+  "compilerOptions": {
+    "lib": ["dom", "dom.asynciterable", "dom.iterable", "deno.ns"],
+    "jsx": "precompile",
+    "jsxImportSource": "preact",
+    "jsxPrecompileSkipElements": [
+      "a",
+      "img",
+      "source",
+      "body",
+      "html",
+      "head",
+      "title",
+      "meta",
+      "script",
+      "link",
+      "style",
+      "base",
+      "noscript",
+      "template"
+    ]
+  }
 }

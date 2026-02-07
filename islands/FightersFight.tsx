@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import fighters  from "../routes/api/data/fightersData.json" with { type: "json" };
+import fighters from "../routes/api/data/fightersData.json" with {
+  type: "json",
+};
 import { IFighter } from "../interfaces/IFighter.tsx";
 import Fighter from "./Fighter.tsx";
 import Modal from "./Modal.tsx";
@@ -12,7 +14,6 @@ import { determineWinner } from "./determineWinner.ts";
 export default function FightersFight() {
   const [selectedFighters, setSelectedFighters] = useState<IFighter[]>([]);
   const [winner, setWinner] = useState<string | null>(null);
-  const [winnerId, setWinnerId] = useState<string | null>(null);
   const [loser, setLoser] = useState<string | null>(null);
   const [isFightButtonClicked, setIsFightButtonClicked] = useState(false);
   // const [currentImage, setCurrentImage] = useState<string | null>(null);
@@ -21,7 +22,7 @@ export default function FightersFight() {
   const [currentMoveIndex, setCurrentMoveIndex] = useState<number>(0);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [endingMove, setEndingMove] = useState<string | null>(null);
-  const [isFading, setIsFading] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const fightAudioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -48,6 +49,7 @@ export default function FightersFight() {
   const fight = () => {
     setIsFightButtonClicked(true);
     if (fightAudioRef.current) {
+      fightAudioRef.current.currentTime = 0;
       fightAudioRef.current.play();
     }
     const fighter1 = selectedFighters[0];
@@ -81,13 +83,12 @@ export default function FightersFight() {
     }
     setFightMoves(movesSequence);
 
-    const { winnerName, loserName, winnerId } = determineWinner(
+    const { winnerName, loserName } = determineWinner(
       fighter1,
       fighter2,
     );
     setWinner(winnerName);
     setLoser(loserName);
-    setWinnerId(winnerId);
     //setCurrentImage(`${fighter1.id}-faceoff.jpg`);
     setCurrentMoveIndex(0);
   };
@@ -95,7 +96,6 @@ export default function FightersFight() {
   const closeModal = () => {
     setSelectedFighters([]);
     setWinner(null);
-    setWinnerId(null);
     setLoser(null);
     setIsFightButtonClicked(false);
     setFightMoves([]);
@@ -107,16 +107,34 @@ export default function FightersFight() {
       fightAudioRef.current.pause();
       fightAudioRef.current.currentTime = 0;
     }
+    setIsAudioPlaying(false);
   };
+
+  useEffect(() => {
+    const audio = fightAudioRef.current;
+    if (!audio) return;
+
+    const handlePlay = () => setIsAudioPlaying(true);
+    const handlePause = () => setIsAudioPlaying(false);
+    const handleEnded = () => setIsAudioPlaying(false);
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
 
   useEffect(() => {
     if (isFightButtonClicked && currentMoveIndex < fightMoves.length) {
       const timeout = setTimeout(() => {
-        setIsFading(true);
         setTimeout(() => {
           //setCurrentImage(fightMoves[currentMoveIndex].photo);
           setCurrentMoveIndex(currentMoveIndex + 1);
-          setIsFading(false);
           //setIsImageError(false); // Reset error state
         }, 200);
       }, 1200);
@@ -152,7 +170,9 @@ export default function FightersFight() {
         const filteredFighters = fighters
           .filter((fighter) => fighter.division === division)
           .filter((fighter) =>
-            fighter["full name"].toLowerCase().includes(searchTerm.toLowerCase())
+            fighter["full name"].toLowerCase().includes(
+              searchTerm.toLowerCase(),
+            )
           );
 
         if (filteredFighters.length === 0) return null;
@@ -197,8 +217,11 @@ export default function FightersFight() {
         <Modal onClose={closeModal}>
           <div class="p-2 rounded-lg justify-between grid grid-cols-1 gap-4 sm:grid-cols-2 row-span-2 relative">
             {selectedFighters.map((fighter) => (
-              <div>
-                <Fighter {...fighter} />
+              <div key={fighter.id}>
+                <Fighter
+                  {...fighter}
+                  imageClassName={isAudioPlaying ? "fighter-shake" : ""}
+                />
               </div>
             ))}
           </div>
@@ -216,6 +239,7 @@ export default function FightersFight() {
           </p>
           <div class="flex justify-center mt-4 mx-auto">
             <button
+              type="button"
               onClick={fight}
               disabled={isFightButtonClicked}
               class={`bg-black text-white py-2 px-4 rounded-lg text-xl m-2 font-semibold max-h-16 btn-custom-focus-visible hover:bg-purple-800 ${

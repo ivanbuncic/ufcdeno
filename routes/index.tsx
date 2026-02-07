@@ -1,6 +1,6 @@
 // index.tsx
 
-import { Head } from "$fresh/runtime.ts";
+import { Head } from "fresh/runtime";
 import FightersFight from "../islands/FightersFight.tsx";
 
 const maintenanceMode = false;
@@ -12,13 +12,7 @@ export default function Home() {
     return (
       <div>
         <Head>
-          <head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=0.9"
-            >
-            </meta>
-          </head>
+          <meta name="viewport" content="width=device-width, initial-scale=0.9" />
         </Head>
         <div class="grid items-center h-screen">
           <img

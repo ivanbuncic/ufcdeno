@@ -1,4 +1,5 @@
-import { PageProps } from "$fresh/server.ts";
+import { PageProps } from "fresh";
+import { asset } from "fresh/runtime";
 
 export default function App({ Component }: PageProps) {
   return (
@@ -15,7 +16,7 @@ export default function App({ Component }: PageProps) {
           content="ufc, ufc fight prediction, fight outcome, who will win, win ufc fight, loosing a fight"
         />
         <title>🍋 UFC fight predictor on Deno Fresh</title>
-        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href={asset("/styles.css")} />
       </head>
       <body>
         <Component />
